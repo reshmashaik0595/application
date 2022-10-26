@@ -15,4 +15,4 @@ const EmployeeSchema = mongoose.Schema({
     }
 });
 
-const Employee = module.exports = mongoose.model('Employee', EmployeeSchema)
+module.exports = mongoose.model('Employee', EmployeeSchema)

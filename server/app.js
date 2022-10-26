@@ -10,7 +10,7 @@ var app = express();
 const route = require('./routes/route');
 
 //connect to mongodb
-mongoose.connect('mongodb://reshma_shaik:Mlab123@ds161183.mlab.com:61183/application',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/application',{ useNewUrlParser: true });
 
 //on connection
 mongoose.connection.on('connected', () => {

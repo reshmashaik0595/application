@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="page-header">Add Employee</h2>
+    <h2 class="page-header">{{initialButton}}</h2>
     <form>
         <div class="form-group">
             <label>First Name</label>
@@ -8,27 +8,35 @@
             <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control">
             <label>Phone</label>
             <input type="text" [(ngModel)]="phone" name="phone" class="form-control">
-            <br> <input type="submit" class="btn btn-success" value="Add" (click)="addEmployee()">
+            <br>
+            <input type="submit" class="btn btn-success" value="{{initialButton}}"
+                (click)="initialButton == 'Add Employee' ?  addEmployee() : updateEmployee()">
+            <input type="submit" class="btn btn-primary" value="Clear" (click)="clear()" style="margin-left:10px">
         </div>
     </form>
 </div>
 <div class="container">
-    <h2 class="page-header">list of Employees</h2>
+    <h2 class="page-header">Employee List</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>S.No</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th> Phone</th>
+                <th>Phone</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let employee of employees">
+            <tr *ngFor="let employee of employees; index as i">
+                <td>{{i + 1}}</td>
                 <td>{{employee.first_name}}</td>
                 <td>{{employee.last_name}}</td>
                 <td>{{employee.phone}}</td>
-                <td><input type="submit" class="btn btn-danger" value="delete" (click)="deleteEmployee(employee._id)">
+                <td>
+                    <input type="submit" class="btn btn-danger" value="Delete" (click)="deleteEmployee(employee._id)">
+                    <input type="submit" class="btn btn-primary" value="Edit" (click)="editEmployee(employee._id)"
+                        style="margin-left:10px">
                 </td>
             </tr>
         </tbody>

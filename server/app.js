@@ -2,26 +2,20 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyparser = require('body-parser');
-var cors = require('cors');
-var path = require('path');
+var cors = require('cors'); // Cross-Origin Resource Sharing
 var app = express();
 
 //import routes
 const route = require('./routes/route');
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/application',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/application', { useNewUrlParser: true });
 
 //on connection
-mongoose.connection.on('connected', () => {
-    console.log("Mongo DB connected");
-});
-
-//error handling
 mongoose.connection.on('connected', (err) => {
-    if (err) {
-        console.log("Connection Failed");
-    }
+    if (err)
+        console.log(" Mongo DB Connection Failed.");
+    console.log("Mongo DB connected Successfully.");
 });
 
 //port number 
@@ -35,9 +29,11 @@ app.use('/api', route);
 
 //testing purpose
 app.get('/', (req, res) => {
-    res.send('Successfully render')
+    res.send('NODE is UP and RUNNING 😃');
 });
 
-app.listen(port, () => {
-    console.log('Node Server started successfully at port ' + port)
+app.listen(port, (err) => {
+    if (err)
+        console.log('Failed to start NODE to the port:' + port);
+    console.log('NODE is listening to the port:' + port)
 });

@@ -16,6 +16,10 @@ router.delete('/deleteemployee/:id', async (req, res) => {
     res.send(await Employee.remove({ _id: req.params.id }));
 });
 
+router.delete('/deleteemployees', async (req, res) => {
+    res.send(await Employee.remove());
+});
+
 router.get('/getemployee/:id', async (req, res) => {
     res.send(await Employee.find({ _id: req.params.id }));
 });

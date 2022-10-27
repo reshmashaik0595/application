@@ -23,6 +23,10 @@ export class EmployeeService {
     return this.http.delete(url.domainurl + 'deleteemployee/' + id);
   }
 
+  deleteAllEmployees(): Observable<any> {
+    return this.http.delete(url.domainurl + 'deleteemployees');
+  }
+
   getEmployeeByID(id: any): Observable<any> {
     return this.http.get(url.domainurl + 'getemployee/' + id);
   }

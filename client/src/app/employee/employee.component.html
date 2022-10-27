@@ -11,12 +11,18 @@
             <br>
             <input type="submit" class="btn btn-success" value="{{initialButton}}"
                 (click)="initialButton == 'Add Employee' ?  addEmployee() : updateEmployee()">
+
             <input type="submit" class="btn btn-primary" value="Clear" (click)="clear()" style="margin-left:10px">
+
         </div>
     </form>
 </div>
 <div class="container">
-    <h2 class="page-header">Employee List</h2>
+    <h2 class="page-header">Employee List <input type="submit" class="btn btn-danger" value="Delete all"
+            (click)="deleteAllEmployees()">
+    </h2>
+
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -24,7 +30,7 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Phone</th>
-                <th>Action</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>

@@ -7,6 +7,7 @@ import { employee } from '../employee';
   styleUrls: ['./employee.component.css'],
   providers: [EmployeeService]
 })
+
 export class EmployeeComponent implements OnInit {
   employees: employee[];
   first_name: string;
@@ -18,16 +19,20 @@ export class EmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.employeeService.getEmployees().subscribe((list: any) => {
-      this.employees = list;
-    })
+    this.getEmployees();
   }
 
   deleteEmployee(id: any) {
     this.employeeService.deleteEmployee(id).subscribe(response => {
       console.log("EMPLOYEE DELETE RESPONSE: ", response)
-      let index = this.employees.findIndex(i => i._id === id);
-      this.employees.splice(index, 1);
+      this.getEmployees();
+    })
+  }
+  
+  deleteAllEmployees() {
+    this.employeeService.deleteAllEmployees().subscribe(response => {
+      console.log("deleteAllEmployees RESPONSE: ", response)
+      this.getEmployees();
     })
   }
 
@@ -43,9 +48,7 @@ export class EmployeeComponent implements OnInit {
       this.first_name = null;
       this.last_name = null;
       this.phone = null;
-      this.employeeService.getEmployees().subscribe((list: any) => {
-        this.employees = list;
-      })
+      this.getEmployees();
     })
   }
 
@@ -72,10 +75,8 @@ export class EmployeeComponent implements OnInit {
       this.first_name = null;
       this.last_name = null;
       this.phone = null;
-      this.employeeService.getEmployees().subscribe((list: any) => {
-        this.employees = list;
-        this.initialButton = "Add Employee";
-      })
+      this.getEmployees();
+      this.initialButton = "Add Employee";
     })
   }
 
@@ -84,6 +85,12 @@ export class EmployeeComponent implements OnInit {
     this.last_name = null;
     this.phone = null;
     this.initialButton = "Add Employee";
+  }
+
+  getEmployees() {
+    this.employeeService.getEmployees().subscribe((list: any) => {
+      this.employees = list;
+    })
   }
 
 }

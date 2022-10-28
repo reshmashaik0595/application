@@ -1,0 +1,124 @@
+<!-- <p>editmember works!</p>
+{{member | json}}
+<button type="button" class="btn btn-primary" [routerLink]="['/view']">Back</button> -->
+
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{member[0].memberPhoto}}"
+                        alt="" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5 *ngIf="!editForm">
+                        {{member[0].firstName}} {{member[0].middleName}} {{member[0].lastName}}
+                    </h5>
+
+
+                    <input *ngIf="editForm" type="text" [(ngModel)]="firstName" name="firstName" class="form-control">
+                    <input *ngIf="editForm" type="text" [(ngModel)]="middleName" name="middleName" class="form-control">
+                    <input *ngIf="editForm" type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
+                    <h6>
+                        {{member[0].profession}} | {{member[0].jobPosition}}
+                    </h6>
+                    <!-- <p class="proile-rating">Member Ranking : </p> -->
+                    <h6>
+                        {{member[0].memberRankLevel}} | {{member[0].memberEarnedPoints}}
+                    </h6>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home"
+                                aria-selected="true">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Back" [routerLink]="['/view']" />
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>Home Address</p>
+                    <a *ngIf="!editForm"> {{member[0].homeAddress}}</a>
+                    <input *ngIf="editForm" type="text" [(ngModel)]="homeAddress" name="homeAddress"
+                        class="form-control">
+                    <p>Office Address</p>
+                    <a *ngIf="!editForm"> {{member[0].officeAddress}}</a>
+                    <input *ngIf="editForm" type="text" [(ngModel)]="officeAddress" name="officeAddress"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Mobile Number</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p *ngIf="!editForm">{{member[0].mobileNumber}}</p>
+                                <input *ngIf="editForm" type="text" [(ngModel)]="mobileNumber" name="mobileNumber"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>EmailID</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p *ngIf="!editForm">{{member[0].emailId}}</p>
+                                <input *ngIf="editForm" type="text" [(ngModel)]="emailId" name="emailId"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>HomeLandline</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p *ngIf="!editForm">{{member[0].homeLandline}}</p>
+                                <input *ngIf="editForm" type="text" [(ngModel)]="homeLandline" name="homeLandline"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Office Landline</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p *ngIf="!editForm">{{member[0].officeLandline}}</p>
+                                <input *ngIf="editForm" type="text" [(ngModel)]="officeLandline" name="officeLandline"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Member Status</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p *ngIf="!editForm">{{member[0].memberstatus}}</p>
+                                <input *ngIf="editForm" type="text" [(ngModel)]="memberstatus" name="memberstatus"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6" *ngIf="!editForm">
+            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit" (click)="editData()" />
+        </div>
+
+        <div class="col-md-6" *ngIf="editForm">
+            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Update" (click)="updateData()" />
+        </div>
+    </form>
+</div>

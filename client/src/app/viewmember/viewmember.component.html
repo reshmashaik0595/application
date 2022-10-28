@@ -1,0 +1,59 @@
+<!-- <p>viewmember works!</p> -->
+<!-- {{members  | json}} -->
+<!-- <div class="card" *ngFor="let member of members;">
+    <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" style="width: 25%;height: 25%;" alt="Sunset Over the Sea" />
+    <div class="card-body">
+      <p class="card-text" style="width: 25%;height: 25%;">{{member.middleName}}</p>
+      <button type="button" class="btn btn-primary" [routerLink]="['/edit', member._id]">Edit</button>
+    </div>
+  </div> -->
+
+<!-- 
+
+  <div class="row card-group">
+    <div class="col-4"  *ngFor="let member of members">
+        
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" alt="Sunset Over the Sea" />
+
+        <div class="card">
+            <p class="card-text">{{member.middleName}}</p>
+            <button type="button" class="btn btn-primary" [routerLink]="['/edit', member._id]">Edit</button>
+        </div>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="column" *ngFor="let member of members">
+      <div class="card">
+        <img src="{{member.memberPhoto}}" alt="No Profile found" />
+        <h3> {{member.firstName}} {{member.middleName}} {{member.lastName}}  <i class="fa fa-pencil-square-o" [routerLink]="['/edit', member._id]" style="font-size:16px"></i> </h3>
+        <div class="row">
+            <div class="column-inner">
+              <div class="card">
+               <p><b>Profession: </b> {{member.profession}}  </p>
+               <p><b>JobPosition: </b> {{member.jobPosition}}  </p>
+               <p><b>MobileNumber: </b> {{member.mobileNumber}}  </p>
+               <p><b>Homeaddress: </b> {{member.homeAddress}}  </p>
+               <p><b>Officeaddress: </b> {{member.officeAddress}}  </p>
+               <p><b>MemberPhoto: </b> {{member.memberPhoto}}  </p>
+               <p><b>EmailID: </b> {{member.emailId}}  </p>
+
+               
+               
+            </div>
+            </div>
+            <div class="column-inner">
+                <div class="card">
+                    <p><b>Homelandline: </b> {{member.homeLandline}}  </p>
+                    <p><b>Officelandline: </b> {{member.officeLandline}}  </p>
+                    <p><b>Hobby: </b> {{member.hobby}}  </p>
+                    <p><b>PreviousOrganisation: </b> {{member.PreviousOrganisation}}  </p>
+                    <p><b>MemberRankLevel: </b> {{member.memberRankLevel}}  </p>
+                    <p><b>MemberStatus: </b> {{member.memberstatus}}  </p>
+                    <p><b>MemberEarnedPoints: </b> {{member.memberEarnedPoints}}  </p>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>

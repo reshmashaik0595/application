@@ -6,18 +6,30 @@ import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ViewmemberComponent } from './viewmember/viewmember.component';
+import { editmemberComponent } from './editmember/editmember.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    ViewmemberComponent,
+    editmemberComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'edit/:id', component: editmemberComponent},
+      {path: 'view', component: ViewmemberComponent },
+      {path: '', redirectTo: '/view', pathMatch: 'full'}
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

@@ -25,7 +25,9 @@
 <div class="row">
     <div class="column" *ngFor="let member of members">
       <div class="card">
-        <img src="{{member.memberPhoto}}" alt="No Profile found" />
+        <img *ngIf="member.memberPhoto" src="{{member.memberPhoto}}"/>
+        <img *ngIf="!member.memberPhoto" src="https://www.shutterstock.com/image-vector/user-profile-icon-vector-people-600w-1924869602.jpg" />
+
         <h3> {{member.firstName}} {{member.middleName}} {{member.lastName}}  <i class="fa fa-pencil-square-o" [routerLink]="['/edit', member._id]" style="font-size:16px"></i> </h3>
         <div class="row">
             <div class="column-inner">
@@ -35,7 +37,6 @@
                <p><b>MobileNumber: </b> {{member.mobileNumber}}  </p>
                <p><b>Homeaddress: </b> {{member.homeAddress}}  </p>
                <p><b>Officeaddress: </b> {{member.officeAddress}}  </p>
-               <p><b>MemberPhoto: </b> {{member.memberPhoto}}  </p>
                <p><b>EmailID: </b> {{member.emailId}}  </p>
 
                
